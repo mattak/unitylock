@@ -6,5 +6,5 @@ RSpec::Core::RakeTask.new(:spec)
 task :default => :spec
 
 task :serve do
-  sh 'bundle', 'exec', 'puma', 'exe/unitylock-server.ru'
+  sh 'bundle', 'exec', 'puma', 'config.ru'
 end

@@ -1,0 +1,7 @@
+{
+  "name": "Unitylock",
+  "description": "Lock unity files and share with team members",
+  "image": "heroku/ruby",
+  "repository": "https://github.com/mattak/unitylock-server",
+  "keywords": ["ruby", "Unity3D"]
+}
