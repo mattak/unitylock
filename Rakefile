@@ -4,3 +4,7 @@ require "rspec/core/rake_task"
 RSpec::Core::RakeTask.new(:spec)
 
 task :default => :spec
+
+task :serve do
+  sh 'bundle', 'exec', 'puma', 'exe/unitylock-server.ru'
+end
