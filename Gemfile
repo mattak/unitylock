@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in unitylock-server.gemspec
 gemspec
+
+gem 'sinatra'
+gem 'puma'
