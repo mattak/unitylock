@@ -5,3 +5,4 @@ gemspec
 
 gem 'sinatra'
 gem 'puma'
+gem 'faraday'
