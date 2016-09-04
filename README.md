@@ -1,4 +1,4 @@
-# Unitylock
+# Unitylock [![Build Status](https://travis-ci.org/mattak/unitylock.svg?branch=master)](https://travis-ci.org/mattak/unitylock)
 
 Serve file lock management system for Unity3D.
 
