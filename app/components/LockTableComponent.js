@@ -1,18 +1,28 @@
 import React, { Component, PropTypes } from 'react'
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table'
 
-class LockTable extends Component {
+class LockTableComponent extends Component {
   constructor(props) {
     super(props)
+    this.data = [];
+    this.handleOnCellClick = this.handleOnCellClick.bind(this);
+  }
+
+  handleOnCellClick(index) {
+    let selectedData = this.props.list[index];
+    this.props.onDataClick(selectedData);
   }
 
   render() {
-    const list = this.props.list;
+    const _data = this.props.list;
+    this.data   = _data;
+
     return (
       <Table
-        multiSelectable={true}
+        multiSelectable={false}
+        onCellClick={this.handleOnCellClick}
       >
-        <TableHeader>
+        <TableHeader enableSelectAll={false}>
           <TableRow>
             <TableHeaderColumn>User</TableHeaderColumn>
             <TableHeaderColumn>File</TableHeaderColumn>
@@ -20,11 +30,11 @@ class LockTable extends Component {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {list.map( (item, index) => (
+          {_data.map( (item, index) => (
             <TableRow key={index} selectable={item.user == null}>
               <TableRowColumn>{item.user}</TableRowColumn>
               <TableRowColumn>{item.file}</TableRowColumn>
-              <TableRowColumn>{item.time}</TableRowColumn>
+              <TableRowColumn>{item.updated_at}</TableRowColumn>
             </TableRow>
           ))}
         </TableBody>
@@ -33,12 +43,13 @@ class LockTable extends Component {
   }
 }
 
-LockTable.propTypes = {
+LockTableComponent.propTypes = {
   list: PropTypes.arrayOf(PropTypes.shape({
-    user: PropTypes.string.isDefined,
-    file: PropTypes.string.isRequired,
-    time: PropTypes.string.isRequired
-  }).isRequired).isRequired
+    user:       PropTypes.string.isDefined,
+    file:       PropTypes.string.isRequired,
+    updated_at: PropTypes.string.isRequired
+  }).isRequired).isRequired,
+  onDataClick: PropTypes.func.isRequired,
 }
 
-export default LockTable
+export default LockTableComponent

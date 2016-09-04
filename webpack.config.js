@@ -14,6 +14,11 @@ module.exports = {
     filename:   'bundle.js',
     publicPath: '/static/'
   },
+
+  devServer: {
+    contentBase: 'public/static',
+    port: 3000
+  },
   
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),

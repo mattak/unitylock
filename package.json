@@ -4,7 +4,7 @@
   "description": "Unity3D filelock share service",
   "main": "index.js",
   "scripts": {
-    "dev": "./node_modules/.bin/webpack-dev-server --content-base app/index.html --progress --colors",
+    "dev": "./node_modules/.bin/webpack-dev-server --content-base public/static --progress --colors",
     "build": "./node_modules/.bin/webpack -p --config webpack.config.js --display-error-details --profile --progress --colors",
     "start": "babel-node server.js",
     "test": "mocha --compilers js:babel-register"
