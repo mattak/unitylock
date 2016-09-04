@@ -1,4 +1,4 @@
-# Unitylock::Server
+# Unitylock
 
 Serve file lock management system for Unity3D.
 
