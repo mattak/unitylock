@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+require 'unitylock/client'
+require 'optparse'
+
+params  = ARGV.getopts('', 'user:')
+command = ARGV.shift
+
+client = Unitylock::Client::Main.new "http://localhost:3000"
+
+case command
+when "search" then
+  puts client.search.body
+when "touches" then
+  puts client.touches(ARGV).body
+when "deletes" then
+  puts client.deletes(ARGV).body
+when "delete_all" then
+  puts client.delete_all.body
+when "lock" then
+  user = params['user']
+  raise "requires parameter 'file'" unless ARGV.size > 0
+  raise "requires parameter 'user'" unless user != nil
+  puts client.locks(user: user, files: ARGV)
+when "unlock" then
+  user = params['user']
+  raise "requires parameter 'file'" unless ARGV.size > 0
+  raise "requires parameter 'user'" unless user != nil
+  puts client.unlocks(user: user, files: ARGV)
+else
+  puts "undefined command"
+  exit 1
+end
+

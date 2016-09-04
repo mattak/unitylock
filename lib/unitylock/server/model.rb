@@ -1,5 +1,8 @@
+require 'ostruct'
 require 'json'
+require 'unitylock/server/entity/unityfile'
 
+include Unitylock::Server::Entity
 module Unitylock
   module Server
     class Model
@@ -12,46 +15,43 @@ module Unitylock
       end
 
       def load
-        @data = JSON.parse(File.read(@file))
+        @data = JSON.parse(File.read(@file), create_additions: true)
       end
 
       def save
         File.write(@file, JSON.generate(@data))
       end
 
-      def delete(file)
+      def delete(file:)
         @data.delete(file)
         save
       end
 
-      def create(user)
-        { user: user, updated_at: Time.now.to_i }
-      end
-
-      def lock(file, user)
-        can_lock = @data[file] == nil
-        @data[file] = create(user) if can_lock
+      def lock(file:, user:)
+        raise "lock failure" unless @data.has_key?(file) && @data[file].user == nil
+        @data[file] = UnityFile.create(file: file, user: user)
         save
-        can_lock
+        @data[file]
       end
 
-      def unlock(file, user)
-        can_unlock = @data.has_key?(file) && @data[file]['user'] == user
-        @data[file] = nil if can_unlock
+      def unlock(file:, user:) 
+        raise "unlock failure" unless @data.has_key?(file) && @data[file].user == user
+        @data[file] = UnityFile.create(file: file, user: nil)
         save
-        can_unlock
+        @data[file]
       end
 
-      def update(file, user)
-        @data[file] = create(user)
+      def create_or_update(file:)
+        @data[file] ||= UnityFile.create(file: file)
+        @data[file].update
         save
       end
 
-      def search_by_user(user)
-        @data.select {|k,v| v != nil && v['user'] == user}
+      def search
+        @data.map {|key,value| value}
       end
 
-      def search_by_file(file)
+      def fetch(file:)
         @data[file]
       end
     end
