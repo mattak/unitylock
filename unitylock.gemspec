@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'unitylock/server/version'
+require 'unitylock/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "unitylock-server"
-  spec.version       = Unitylock::Server::VERSION
+  spec.name          = "unitylock"
+  spec.version       = Unitylock::VERSION
   spec.authors       = ["mattak"]
   spec.email         = ["mattak.me@gmail.com"]
 
-  spec.summary       = %q{unitylock server}
+  spec.summary       = %q{unitylock}
   spec.description   = %q{lock unity files and share with team members}
-  spec.homepage      = "https://github.com/mattak/unitylock-server"
+  spec.homepage      = "https://github.com/mattak/unitylock"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

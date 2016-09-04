@@ -1,2 +1,2 @@
-require 'unitylock/server/version'
+require 'unitylock/version'
 require 'unitylock/server/router'

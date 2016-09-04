@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    unitylock-server (0.1.0)
+    unitylock (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -44,7 +44,7 @@ DEPENDENCIES
   rake (~> 10.0)
   rspec (~> 3.0)
   sinatra
-  unitylock-server!
+  unitylock!
 
 RUBY VERSION
    ruby 2.3.0p0
