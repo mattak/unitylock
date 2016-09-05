@@ -2,10 +2,13 @@
 require 'unitylock/client'
 require 'optparse'
 
-params  = ARGV.getopts('', 'user:')
-command = ARGV.shift
+PROJECT_CONFIG_FILE = '.unitylock'
 
-client = Unitylock::Client::Main.new "http://localhost:3000"
+params         = ARGV.getopts('', 'user:')
+command        = ARGV.shift
+project_config = File.exists?(PROJECT_CONFIG_FILE) ? JSON.parse(File.read(PROJECT_CONFIG_FILE), {symbolize_names: true}) : {}
+url            = project_config[:url] || 'http://localhost:3000'
+client         = Unitylock::Client::Main.new(url)
 
 case command
 when "search" then
@@ -26,6 +29,11 @@ when "unlock" then
   raise "requires parameter 'file'" unless ARGV.size > 0
   raise "requires parameter 'user'" unless user != nil
   puts client.unlocks(user: user, files: ARGV)
+when 'init' then
+  print 'url (http://localhost:3000): '
+  url = gets.chomp.sub(/^$/, 'http://localhost:3000')
+  File.write(PROJECT_CONFIG_FILE, JSON.pretty_generate({url: url}))
+  puts 'Created .unitylock'
 else
   puts "undefined command"
   exit 1
