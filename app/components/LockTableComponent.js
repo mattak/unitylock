@@ -1,3 +1,4 @@
+import { basename }                    from '../utils/FileUtils'
 import React, { Component, PropTypes } from 'react'
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table'
 
@@ -26,6 +27,7 @@ class LockTableComponent extends Component {
           <TableRow>
             <TableHeaderColumn>User</TableHeaderColumn>
             <TableHeaderColumn>File</TableHeaderColumn>
+            <TableHeaderColumn>Path</TableHeaderColumn>
             <TableHeaderColumn>Time</TableHeaderColumn>
           </TableRow>
         </TableHeader>
@@ -33,6 +35,7 @@ class LockTableComponent extends Component {
           {_data.map( (item, index) => (
             <TableRow key={index} selectable={item.user == null || item.user == _user}>
               <TableRowColumn>{item.user}</TableRowColumn>
+              <TableRowColumn>{basename(item.file)}</TableRowColumn>
               <TableRowColumn>{item.file}</TableRowColumn>
               <TableRowColumn>{item.updated_at}</TableRowColumn>
             </TableRow>
