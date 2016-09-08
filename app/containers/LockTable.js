@@ -6,22 +6,29 @@ import unlock             from '../action_creators/Unlock'
 
 const mapStateToProps = (state) => {
   return {
-    list: state,
+    list: state['data'],
+    user: state['user'] || 'sample_user',
   }
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onDataClick: (selectedData) => {
-      console.log("selectedData: " + selectedData);
+    onDataClick: (user, selectedData) => {
+      if (user == null || user == '') {
+        console.warn("user not defined");
+        return;
+      }
+
+      let dataFile = selectedData['file']
+      let dataUser = selectedData['user']
 
       // unlock
-      if (selectedData['user']) {
-        unlock(dispatch, 'FIXME:user', selectedData['file'])
+      if (dataUser) {
+        unlock(dispatch, user, dataFile)
       }
+      // lock
       else {
-        // lock
-        lock(dispatch, 'FIXME:user', selectedData['file'])
+        lock(dispatch, user, dataFile)
       }
 
       search(dispatch)

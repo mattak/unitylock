@@ -7,6 +7,7 @@ import MuiThemeProvider     from 'material-ui/styles/MuiThemeProvider'
 import list                 from './reducers'
 import App                  from './containers/App'
 import search               from './action_creators/Search'
+import login                from './action_creators/Login'
 
 injectTapEventPlugin()
 
@@ -30,4 +31,4 @@ store.subscribe(render)
 
 // initial request
 search(store.dispatch)
-
+// login(store.dispatch)

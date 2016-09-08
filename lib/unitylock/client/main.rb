@@ -66,6 +66,7 @@ module Unitylock
 
       def sync(dir: '.', force: false, includes: /\.(unity|prefab)$/, excludes: /^$/)
         files = Find.find(dir).select{|it| it =~ includes}.select{|it| it !~ excludes}
+
         puts "touched:"
         puts files
 
