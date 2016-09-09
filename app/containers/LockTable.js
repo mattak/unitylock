@@ -25,13 +25,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       // unlock
       if (dataUser) {
         unlock(dispatch, user, dataFile)
+          .then((it) => { search(dispatch) })
       }
       // lock
       else {
         lock(dispatch, user, dataFile)
+          .then((it) => { search(dispatch) })
       }
-
-      search(dispatch)
     }
   }
 };
