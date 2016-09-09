@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import MuiThemeProvider     from 'material-ui/styles/MuiThemeProvider'
 import LockTable            from './LockTable'
-import LockAppBar           from '../components/LockAppBar'
+import LockAppBar           from './LockAppBar'
 
 const App = () => (
   <div>
@@ -9,5 +9,4 @@ const App = () => (
     <LockTable />
   </div>
 )
-
 export default App
