@@ -13,12 +13,12 @@ class LockAppBarComponent extends Component {
   }
 
   handleOnLoginClick() {
-    console.log("onLoginClick");
+    this.props.onLoginClick()
   }
 
   // event: object, isKeyboardFocused: boolean
   handleOnSyncClick() {
-    console.log("onSyncClick");
+    this.props.onSyncClick()
   }
 
   render() {

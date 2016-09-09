@@ -1,5 +1,6 @@
 import { connect }         from 'react-redux'
 import LockAppBarComponent from '../components/LockAppBarComponent'
+import search              from '../action_creators/Search'
 
 const mapStateToProps = (state) => {
   return {}
@@ -11,7 +12,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       console.log("onLockClick");
     },
     onSyncClick: () => {
-      console.log("onSyncClick");
+      search(dispatch)
     },
   }
 };
