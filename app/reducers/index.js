@@ -1,14 +1,14 @@
 export default function list(
-    state = {
+    state = {},
+    action
+)
+{
+  var newState = Object.assign({
       data: [],
       user: 'guest',
       snack_message: '',
       login_dialog_open: false,
-    },
-    action
-)
-{
-  var newState = Object.assign({}, state)
+  }, state)
 
   switch (action.type) {
     case 'search':

@@ -30,6 +30,7 @@
     "react-redux": "^4.4.5",
     "react-tap-event-plugin": "^1.0.0",
     "redux": "^3.5.2",
+    "redux-localstorage": "^0.4.1",
     "websocket": "^1.0.23"
   },
   "devDependencies": {

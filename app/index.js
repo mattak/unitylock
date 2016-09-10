@@ -1,17 +1,20 @@
 import React                from 'react'
 import ReactDOM             from 'react-dom'
 import { Provider }         from 'react-redux'
-import { createStore }      from 'redux'
+import { compose, createStore } from 'redux'
+import persistState         from 'redux-localstorage'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import MuiThemeProvider     from 'material-ui/styles/MuiThemeProvider'
-import list                 from './reducers'
+
+import reducers             from './reducers'
 import App                  from './containers/App'
 import search               from './action_creators/Search'
 import login                from './action_creators/Login'
 
 injectTapEventPlugin()
 
-const store       = createStore(list)
+const enhancer = compose(persistState('user'))
+const store    = createStore(reducers, enhancer)
 const rootElement = document.getElementById('root')
 
 function render()
@@ -26,9 +29,13 @@ function render()
   )
 }
 
+if (store.state) {
+  console.log("logined user: " + store.state.user);
+}
+
 render()
 store.subscribe(render)
 
 // initial request
 search(store.dispatch)
-// login(store.dispatch)
+
