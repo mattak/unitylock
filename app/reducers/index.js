@@ -1,13 +1,14 @@
 export default function list(
     state = {
       data: [],
-      user: null,
+      user: 'guest',
       snack_message: '',
+      login_dialog_open: false,
     },
     action
 )
 {
-  var newState = {data: state['data'], user: state['user']}
+  var newState = Object.assign({}, state)
 
   switch (action.type) {
     case 'search':
@@ -18,6 +19,9 @@ export default function list(
       break;
     case 'snack_message':
       newState['snack_message'] = action['snack_message']
+      break;
+    case 'login_dialog_open':
+      newState['login_dialog_open'] = action.login_dialog_open
       break;
     default:
       break;

@@ -15,7 +15,7 @@ export default function Unlock(dispatch, name, file) {
     .then(res => res.json())
     .then(result =>
       dispatch({
-        type: "unlock",
+        type: 'unlock',
         data: result
       })
     );

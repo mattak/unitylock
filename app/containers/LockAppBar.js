@@ -1,7 +1,8 @@
 import { connect }         from 'react-redux'
 import LockAppBarComponent from '../components/LockAppBarComponent'
 import search              from '../action_creators/Search'
-import snackmessage        from '../action_creators/SnackMessage'
+import snack_message       from '../action_creators/SnackMessage'
+import login_dialog_action from '../action_creators/LoginDialogAction'
 
 const mapStateToProps = (state) => {
   return {}
@@ -10,12 +11,12 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onLoginClick: () => {
-      console.log("onLockClick");
+      login_dialog_action(dispatch, true)
     },
     onSyncClick: () => {
       search(dispatch)
         .then((_) => {
-          snackmessage(dispatch, 'synchronized');
+          snack_message(dispatch, 'synchronized');
         })
     },
   }
