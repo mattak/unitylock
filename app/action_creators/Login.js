@@ -1,11 +1,10 @@
-export default function Login(dispatch, name, file) {
+export default function Login(dispatch, name) {
   return new Promise((resolve,reject) => {
-      resolve('guest')
+    console.log("user: " + name)
+    dispatch({
+      type: "login",
+      user: name, 
     })
-    .then(user =>
-      dispatch({
-        type: "login",
-        user: user
-      })
-    );
+    resolve(name)
+  })
 }
