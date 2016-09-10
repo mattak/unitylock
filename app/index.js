@@ -10,6 +10,7 @@ import reducers             from './reducers'
 import App                  from './containers/App'
 import search               from './action_creators/Search'
 import login                from './action_creators/Login'
+import snack_message        from './action_creators/SnackMessage'
 
 injectTapEventPlugin()
 
@@ -37,5 +38,7 @@ render()
 store.subscribe(render)
 
 // initial request
-search(store.dispatch)
+search(store.dispatch).then((_) => 
+  snack_message(store.dispatch, 'Welcome! ' + store.getState().user)
+)
 
