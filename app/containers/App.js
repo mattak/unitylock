@@ -4,6 +4,7 @@ import LockTable            from './LockTable'
 import LockAppBar           from './LockAppBar'
 import AppSnackBar          from './AppSnackBar'
 import LoginDialog          from './LoginDialog'
+import FooterComponent      from '../components/FooterComponent'
 
 const App = () => (
   <div>
@@ -11,6 +12,7 @@ const App = () => (
     <LockTable />
     <AppSnackBar />
     <LoginDialog />
+    <FooterComponent />
   </div>
 )
 export default App
