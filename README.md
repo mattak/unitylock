@@ -1,6 +1,6 @@
 # ![Unitylock](./art/unitylock-logo.png)
 
-![Build Status](https://travis-ci.org/mattak/unitylock.svg?branch=master)](https://travis-ci.org/mattak/unitylock)
+[![Build Status](https://travis-ci.org/mattak/unitylock.svg?branch=master)](https://travis-ci.org/mattak/unitylock)
 
 Serve file lock management system for Unity3D.
 
