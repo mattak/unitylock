@@ -28,7 +28,7 @@ module Unitylock::Server
       content_type :json
       files = JSON.parse(request.body.read)
       service.touches(*files)
-      JSON.generate service.search_by_files(*files)
+      JSON.generate service.search
     end
 
     delete '/files' do
@@ -50,7 +50,7 @@ module Unitylock::Server
       end
 
       service.lock(file: file, user: user)
-      JSON.generate service.search_by_files(file)
+      JSON.generate service.search
     end
 
     put '/user/:user/unlock' do
@@ -65,7 +65,7 @@ module Unitylock::Server
       end
 
       service.unlock(file: file, user: user)
-      JSON.generate service.search_by_files(file)
+      JSON.generate service.search
     end
   end
 end
